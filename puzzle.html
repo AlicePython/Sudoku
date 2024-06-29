@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="it">
+
+</html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Puzzle</title>
+    <!--<link rel="stylesheet" href="static/style.css" type="text/css">-->
+    <style>
+        h1 {
+            margin-top: 20%;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 360px;
+            height: 360px;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 20px;
+            vertical-align: middle;
+        }
+
+        .thick-border {
+            border: 2px solid black;
+        }
+        .top {
+            border-top-width: 2px;
+        }
+        .bottom {
+            border-bottom-width: 2px;
+        }
+        .left {
+            border-left-width: 2px;
+        }
+        .right {
+            border-right-width: 2px;
+        }
+
+        .col-3, .col-6 {
+            border-right-width: 3px;
+        }
+
+        .row-3, .row-6 {
+            border-bottom-width: 3px;
+        }
+
+        input {
+            width: 38px;
+            height: 38px;
+            border: none;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: white;
+            font-family: fantasy;
+            font-size: 1.2vw;
+            white-space:nowrap;
+            width: fit-content;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 3px;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: auto;
+    width: fit-content;
+    text-align: center;
+    font-size: larger;">
+        <h1 id="heading1"></h1>
+    </div>
+
+    <div style="margin: auto; display: block; width: fit-content; text-align: center;">
+        <h3>Good luck!</h3>
+    </div>
+
+<table>
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="thick-border top left"><input type="text" maxlength="1" id="cell-0" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-1" autocomplete="off"></td>
+            <td class="thick-border top right col-3"><input type="text" maxlength="1" id="cell-2" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-3" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-4" autocomplete="off"></td>
+            <td class="thick-border top right col-6"><input type="text" maxlength="1" id="cell-5" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-6" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-7" autocomplete="off"></td>
+            <td class="thick-border top right"><input type="text" maxlength="1" id="cell-8" autocomplete="off"></td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-9" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-10" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-11" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-12" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-13" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-14" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-15" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-16" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-17" autocomplete="off"></td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="thick-border left bottom row-3"><input type="text" maxlength="1" id="cell-18" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-19" autocomplete="off"></td>
+            <td class="thick-border right bottom col-3 row-3"><input type="text" maxlength="1" id="cell-20" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-21" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-22" autocomplete="off"></td>
+            <td class="thick-border right bottom col-6 row-3"><input type="text" maxlength="1" id="cell-23" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-24" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-25" autocomplete="off"></td>
+            <td class="thick-border right bottom row-3"><input type="text" maxlength="1" id="cell-26" autocomplete="off"></td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-27" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-28" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-29" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-30" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-31" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-32" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-33" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-34" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-35" autocomplete="off"></td>
+        </tr>
+        <!-- Row 5 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-36" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-37" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-38" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-39" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-40" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-41" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-42" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-43" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-44" autocomplete="off"></td>
+        </tr>
+        <!-- Row 6 -->
+        <tr>
+            <td class="thick-border left bottom row-6"><input type="text" maxlength="1" id="cell-45" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-46" autocomplete="off"></td>
+            <td class="thick-border right bottom col-3 row-6"><input type="text" maxlength="1" id="cell-47" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-48" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-49" autocomplete="off"></td>
+            <td class="thick-border right bottom col-6 row-6"><input type="text" maxlength="1" id="cell-50" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-51" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-52" autocomplete="off"></td>
+            <td class="thick-border right bottom row-6"><input type="text" maxlength="1" id="cell-53" autocomplete="off"></td>
+        </tr>
+        <!-- Row 7 -->
+        <tr>
+            <td class="thick-border left top"><input type="text" maxlength="1" id="cell-54" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-55" autocomplete="off"></td>
+            <td class="thick-border right top col-3"><input type="text" maxlength="1" id="cell-56" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-57" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-58" autocomplete="off"></td>
+            <td class="thick-border right top col-6"><input type="text" maxlength="1" id="cell-59" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-60" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-61" autocomplete="off"></td>
+            <td class="thick-border right top"><input type="text" maxlength="1" id="cell-62" autocomplete="off"></td>
+        </tr>
+        <!-- Row 8 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-63" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-64" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-65" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-66" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-67" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-68" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-69" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-70" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-71" autocomplete="off"></td>
+        </tr>
+        <!-- Row 9 -->
+        <tr>
+            <td class="thick-border left bottom"><input type="text" maxlength="1" id="cell-72" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-73" autocomplete="off"></td>
+            <td class="thick-border right bottom col-3"><input type="text" maxlength="1" id="cell-74" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-75" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-76" autocomplete="off"></td>
+            <td class="thick-border right bottom col-6"><input type="text" maxlength="1" id="cell-77" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-78" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-79" autocomplete="off"></td>
+            <td class="thick-border right bottom"><input type="text" maxlength="1" id="cell-80" autocomplete="off"></td>
+        </tr>
+    </tbody>
+</table>
+
+    <div style="display: flex; width: 30%; margin: auto;">
+        <button onclick="clearColors()">Clear colors</button>
+        <button onclick="submitValues()">Did I do it right?</button>
+        <button onclick="submitValues()">I give up</button>
+    </div>
+
+
+<script>
+
+    let params = new URLSearchParams(window.location.search)
+    let level = params.get('level')
+
+    var heading1 = document.getElementById("heading1");
+    heading1.innerHTML = level + ' Sudoku Puzzle'
+
+    function validateInput(input) {
+        // Only allow digits 1-9
+        input.value = input.value.replace(/[^1-9]/g, '');
+    }
+
+    function submitValues() {
+        const inputs = document.querySelectorAll('input');
+        let values = [];
+        inputs.forEach(input => values.push(input.value || ''));
+        const params = new URLSearchParams();
+        params.set('sudoku', values.join(','));
+        window.location.href = 'solution.html?' + params.toString();
+    }
+
+    function valid_state(sudoku) {
+        // Check rows
+        for (let row of sudoku) {
+            let cleanedRow = row.filter(n => n !== 0);
+            if (new Set(cleanedRow).size < cleanedRow.length) {
+                return false;
+            }
+        }
+
+        // Check columns
+        for (let c = 0; c < 9; c++) {
+            let col = sudoku.map(row => row[c]).filter(n => n !== 0);
+            if (new Set(col).size < col.length) {
+                return false;
+            }
+        }
+
+        // Check squares
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                let square = [];
+                for (let x = 0; x < 3; x++) {
+                    for (let y = 0; y < 3; y++) {
+                        if (sudoku[i * 3 + x][j * 3 + y] !== 0) {
+                            square.push(sudoku[i * 3 + x][j * 3 + y]);
+                        }
+                    }
+                }
+                if (new Set(square).size < square.length) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    function solved(sudoku) {
+        for (let row of sudoku) {
+            for (let n of row) {
+                if (n === 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    function get_square(sudoku, i, j) {
+        let xs, js;
+        if (i < 3) {
+            xs = [0, 1, 2];
+        } else if (i > 5) {
+            xs = [6, 7, 8];
+        } else {
+            xs = [3, 4, 5];
+        }
+        if (j < 3) {
+            js = [0, 1, 2];
+        } else if (j > 5) {
+            js = [6, 7, 8];
+        } else {
+            js = [3, 4, 5];
+        }
+
+        let square = [];
+        for (let x of xs) {
+            for (let y of js) {
+                square.push(sudoku[x][y]);
+            }
+        }
+        return square;
+    }
+
+    function generate_guesses(sudoku, i, j) {
+        let guesses = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let row = sudoku[i];
+        let column = sudoku.map(row => row[j]);
+        let square = get_square(sudoku, i, j);
+        let combined = new Set([...row, ...column, ...square]);
+        for (let n of combined) {
+            guesses = guesses.filter(num => num !== n);
+        }
+        return guesses;
+    }
+
+    function safe_moves(sudoku) {
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                if (sudoku[i][j] === 0) {
+                    let guesses = generate_guesses(sudoku, i, j);
+                    if (guesses.length === 1) {
+                        sudoku[i][j] = guesses[0];
+                    }
+                }
+            }
+        }
+        return sudoku;
+    }
+
+    function get_solution(sudoku) {
+        if (valid_state(sudoku) === false) {
+            return false
+        }
+        while (!solved(sudoku)) {
+            let new_sudoku = safe_moves(sudoku);
+            while (JSON.stringify(new_sudoku) !== JSON.stringify(sudoku)) {
+                sudoku = new_sudoku.map(row => [...row]);
+                new_sudoku = safe_moves(sudoku);
+            }
+            // Try a random guess and see if it is a dead end
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    if (sudoku[i][j] === 0) {
+                        let guesses = generate_guesses(sudoku, i, j);
+                        if (guesses.length === 0) {
+                            return null;
+                        }
+                        for (let g of guesses) {
+                            let alt_sudoku = JSON.parse(JSON.stringify(sudoku));
+                            alt_sudoku[i][j] = g;
+                            let sol = get_solution(alt_sudoku);
+                            if (sol !== null) {
+                                return sol;
+                            }
+                        }
+                        return null; // dead end
+                    }
+                }
+            }
+        }
+        return sudoku
+    }
+
+    function shuffleArray(array) {
+        let currentIndex = array.length, temporaryValue, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateFullBoard() {
+        let board = Array.from({ length: 9 }, () => Array.from({ length: 9 }, () => 0));
+
+        let square1 = shuffleArray([...Array(9).keys()].map(x => x + 1));
+        let square2 = shuffleArray([...Array(9).keys()].map(x => x + 1));
+        let square3 = shuffleArray([...Array(9).keys()].map(x => x + 1));
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                board[i][j] = square1.shift();
+            }
+        }
+        for (let i = 3; i < 6; i++) {
+            for (let j = 3; j < 6; j++) {
+                board[i][j] = square2.shift();
+            }
+        }
+        for (let i = 6; i < 9; i++) {
+            for (let j = 6; j < 9; j++) {
+                board[i][j] = square3.shift();
+            }
+        }
+        return get_solution(board)
+    }
+
+    function generatePuzzle(level) {
+        if (level === 'Easy') {
+            holes = getRandomInt(36, 45)
+        }
+        else if (level === 'Intermediate') {
+            holes = getRandomInt(46, 54)
+        }
+        else {
+            holes = getRandomInt(55, 64)
+        }
+        let board = generateFullBoard();
+        let holeCoords = [];
+        while (holeCoords.length < holes) {
+            let newHole = [getRandomInt(0, 8), getRandomInt(0, 8)];
+            while (holeCoords.some(coord => coord[0] === newHole[0] && coord[1] === newHole[1])) {
+                newHole = [getRandomInt(0, 8), getRandomInt(0, 8)];
+            }
+            holeCoords.push(newHole);
+        }
+        holeCoords.forEach(coord => {
+            board[coord[0]][coord[1]] = 0;
+        });
+        return board.flat();
+    }
+
+    function fillPuzzle() {
+        const params = generatePuzzle(level);
+            params.forEach((value, index) => {
+                const cell = document.getElementById(`cell-${index}`);
+                if (cell && value !== 0) {
+                    cell.value = value;
+                }
+            });
+        }
+
+    function clearColors() {
+        const cells = document.querySelectorAll('td');
+        cells.forEach(cell => {
+            const input = cell.querySelector('input');
+            input.style.backgroundColor = 'white'
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const cells = document.querySelectorAll('td');
+        cells.forEach(cell => {
+            cell.addEventListener('contextmenu', function (event) {
+                event.preventDefault(); // Prevent the default context menu
+                const input = cell.querySelector('input');
+                input.style.backgroundColor = input.style.backgroundColor === 'yellow' ? '' : 'yellow'; // Toggle background color
+            });
+        });
+    });
+
+    window.onload = fillPuzzle;
+
+</script>
+
+</body>
+
+</html>

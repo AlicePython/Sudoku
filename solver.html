@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="it"></html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <!--<link rel="stylesheet" href="static/style.css" type="text/css">-->
+<style>
+    h1 {
+        margin-top: 20%;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        width: 360px;
+        height: 360px;
+    }
+
+    td {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        font-size: 20px;
+        vertical-align: middle;
+    }
+
+    .thick-border {
+        border: 2px solid black;
+    }
+    .top {
+        border-top-width: 2px;
+    }
+    .bottom {
+        border-bottom-width: 2px;
+    }
+    .left {
+        border-left-width: 2px;
+    }
+    .right {
+        border-right-width: 2px;
+    }
+
+    .col-3, .col-6 {
+        border-right-width: 3px;
+    }
+
+    .row-3, .row-6 {
+        border-bottom-width: 3px;
+    }
+
+    input {
+        width: 38px;
+        height: 38px;
+        border: none;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    button {
+        background-color: white;
+        font-family: fantasy;
+        font-size: 1.2vw;
+        white-space:nowrap;
+        width: fit-content;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        border-radius: 8px;
+        border-style: solid;
+        border-width: 3px;
+        display: block;
+        margin: auto;
+    }
+</style>
+</head>
+
+<body>
+<div style="margin: auto;
+    width: fit-content;
+    text-align: center;
+    font-size: larger;">
+<h1>Sudoku Solver</h1>
+</div>
+
+<div style="margin: auto; display: block; width: fit-content; text-align: center;">
+    <h3>Fill in the grid with the numbers from the sudoku you wish to solve and when you're finished, press 'Solve'.</h3>
+    <h3>If the sudoku has more than one unique solution, the first valid one that is found by the program will be shown.</h3>
+</div>
+
+<table>
+    <tbody>
+        <!-- Row 1 -->
+        <tr>
+            <td class="thick-border top left"><input type="text" maxlength="1" id="cell-0" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-1" autocomplete="off"></td>
+            <td class="thick-border top right col-3"><input type="text" maxlength="1" id="cell-2" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-3" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-4" autocomplete="off"></td>
+            <td class="thick-border top right col-6"><input type="text" maxlength="1" id="cell-5" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-6" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-7" autocomplete="off"></td>
+            <td class="thick-border top right"><input type="text" maxlength="1" id="cell-8" autocomplete="off"></td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-9" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-10" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-11" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-12" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-13" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-14" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-15" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-16" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-17" autocomplete="off"></td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+            <td class="thick-border left bottom row-3"><input type="text" maxlength="1" id="cell-18" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-19" autocomplete="off"></td>
+            <td class="thick-border right bottom col-3 row-3"><input type="text" maxlength="1" id="cell-20" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-21" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-22" autocomplete="off"></td>
+            <td class="thick-border right bottom col-6 row-3"><input type="text" maxlength="1" id="cell-23" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-24" autocomplete="off"></td>
+            <td class="thick-border bottom row-3"><input type="text" maxlength="1" id="cell-25" autocomplete="off"></td>
+            <td class="thick-border right bottom row-3"><input type="text" maxlength="1" id="cell-26" autocomplete="off"></td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-27" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-28" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-29" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-30" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-31" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-32" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-33" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-34" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-35" autocomplete="off"></td>
+        </tr>
+        <!-- Row 5 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-36" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-37" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-38" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-39" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-40" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-41" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-42" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-43" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-44" autocomplete="off"></td>
+        </tr>
+        <!-- Row 6 -->
+        <tr>
+            <td class="thick-border left bottom row-6"><input type="text" maxlength="1" id="cell-45" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-46" autocomplete="off"></td>
+            <td class="thick-border right bottom col-3 row-6"><input type="text" maxlength="1" id="cell-47" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-48" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-49" autocomplete="off"></td>
+            <td class="thick-border right bottom col-6 row-6"><input type="text" maxlength="1" id="cell-50" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-51" autocomplete="off"></td>
+            <td class="thick-border bottom row-6"><input type="text" maxlength="1" id="cell-52" autocomplete="off"></td>
+            <td class="thick-border right bottom row-6"><input type="text" maxlength="1" id="cell-53" autocomplete="off"></td>
+        </tr>
+        <!-- Row 7 -->
+        <tr>
+            <td class="thick-border left top"><input type="text" maxlength="1" id="cell-54" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-55" autocomplete="off"></td>
+            <td class="thick-border right top col-3"><input type="text" maxlength="1" id="cell-56" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-57" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-58" autocomplete="off"></td>
+            <td class="thick-border right top col-6"><input type="text" maxlength="1" id="cell-59" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-60" autocomplete="off"></td>
+            <td class="thick-border top"><input type="text" maxlength="1" id="cell-61" autocomplete="off"></td>
+            <td class="thick-border right top"><input type="text" maxlength="1" id="cell-62" autocomplete="off"></td>
+        </tr>
+        <!-- Row 8 -->
+        <tr>
+            <td class="thick-border left"><input type="text" maxlength="1" id="cell-63" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-64" autocomplete="off"></td>
+            <td class="thick-border right col-3"><input type="text" maxlength="1" id="cell-65" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-66" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-67" autocomplete="off"></td>
+            <td class="thick-border right col-6"><input type="text" maxlength="1" id="cell-68" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-69" autocomplete="off"></td>
+            <td class="thick-border"><input type="text" maxlength="1" id="cell-70" autocomplete="off"></td>
+            <td class="thick-border right"><input type="text" maxlength="1" id="cell-71" autocomplete="off"></td>
+        </tr>
+        <!-- Row 9 -->
+        <tr>
+            <td class="thick-border left bottom"><input type="text" maxlength="1" id="cell-72" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-73" autocomplete="off"></td>
+            <td class="thick-border right bottom col-3"><input type="text" maxlength="1" id="cell-74" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-75" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-76" autocomplete="off"></td>
+            <td class="thick-border right bottom col-6"><input type="text" maxlength="1" id="cell-77" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-78" autocomplete="off"></td>
+            <td class="thick-border bottom"><input type="text" maxlength="1" id="cell-79" autocomplete="off"></td>
+            <td class="thick-border right bottom"><input type="text" maxlength="1" id="cell-80" autocomplete="off"></td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="display: flex; width: 30%; margin: auto;">
+<button onclick="clearTable()">Clear</button>
+<button onclick="submitValues()">Solve</button>
+</div>
+
+
+<script>
+
+    function validateInput(input) {
+        // Only allow digits 1-9
+        input.value = input.value.replace(/[^1-9]/g, '');
+    }
+
+    function clearTable() {
+        var inputs = document.querySelectorAll('#Table input');
+        inputs.forEach(function (input) {
+            input.value = ''; // Clear the value of each input field
+        });
+    }
+
+    function submitValues() {
+        const inputs = document.querySelectorAll('input');
+        let values = [];
+        inputs.forEach(input => values.push(input.value || ''));
+        const params = new URLSearchParams();
+        params.set('sudoku', values.join(','));
+        window.location.href = 'solution.html?' + params.toString();
+    }
+    
+    window.onload = clearTable;
+</script>
+
+</body>
+
+</html>
