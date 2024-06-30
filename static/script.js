@@ -391,10 +391,13 @@ function HighlightCells() {
                 });
                 
             } else {
+                console.log('single cell toggle');
                 if (input.style.backgroundColor === '#FFF380') {
                     input.style.backgroundColor = '';
+                    console.log('off');
                 } else {
                     input.style.backgroundColor = '#FFF380';
+                    console.log('on');
                 }
             }
         });
