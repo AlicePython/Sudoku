@@ -149,7 +149,6 @@ function get_solution(sudoku) {
             }
         }
     }
-    console.log(sudoku);
     return sudoku
 }
 
@@ -279,7 +278,6 @@ function get_unsolved() {
     } else {
         console.error('Sudoku parameter not found in URL.');
     }
-    console.log(sudoku);
     return sudoku;
 }
 
@@ -379,27 +377,31 @@ function HighlightCells() {
 
             if (event.shiftKey && input.value !== '') {
                 const number = input.value;
-                const cells = document.querySelectorAll('td');
-                if (input.style.backgroundColor === '') {
-                    cells.forEach(cell => {
-                        let cell_input = cell.querySelector('input');
-                        if (cell_input.value === number) {
-                            cell_input.style.backgroundColor = '#FFF380';
-                        }
-                    });
-                } else {
-                    cells.forEach(cell => {
-                        let cell_input = cell.querySelector('input');
-                        if (cell_input.value === number) {
-                            cell_input.style.backgroundColor = '';
-                        }
-                    });
+                let highlight = false;
+
+                if (input.style.backgroundColor === '#FFF380') {
+                    highlight = true;
                 }
+
+                cells.forEach(cell => {
+                    const cell_input = cell.querySelector('input');
+                    if (cell_input.value === number) {
+                        cell_input.style.backgroundColor = highlight ? '' : '#FFF380';
+                    }
+                });
                 
             } else {
-                input.style.backgroundColor = input.style.backgroundColor === '#FFF380' ? '' : '#FFF380';
-            }});
+                console.log('single cell toggle');
+                if (input.style.backgroundColor === '#FFF380') {
+                    input.style.backgroundColor = '';
+                    console.log('off');
+                } else {
+                    input.style.backgroundColor = '#FFF380';
+                    console.log('on');
+                }
+            }
         });
+    });
 }
 
 function GaveUp() {
