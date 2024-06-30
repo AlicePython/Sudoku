@@ -12,7 +12,7 @@ let color_dict = {
     indigo: '#4B0082',
     purple: '#6F2DA8',
     lilac: '#B666D2',
-    pink: '#F98B88'
+    pink: '#FFC0CB'
 };
 
 function ChangeColor(color_choice) {
