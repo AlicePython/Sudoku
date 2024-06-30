@@ -248,7 +248,7 @@ function clearColors() {
 
 function Back_to_home() {
         localStorage.clear();
-        window.location.href = 'home.html'
+        window.location.href = 'index.html'
         }
 
 function get_unsolved() {
