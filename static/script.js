@@ -266,9 +266,13 @@ function clearColors() {
 }
 
 function Back_to_home() {
-        localStorage.clear();
-        window.location.href = 'index.html'
-        }
+    localStorage.clear();
+    window.location.href = 'index.html'
+}
+
+function Settings() {
+    window.location.href = 'settings.html'
+}
 
 function get_unsolved() {
     let params = new URLSearchParams(window.location.search);
