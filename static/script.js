@@ -379,7 +379,7 @@ function HighlightCells() {
                 const number = input.value;
                 let highlight = false;
 
-                if (input.style.backgroundColor === '#FFF380') {
+                if (input.style.backgroundColor === '#FFF380' || input.style.backgroundColor === 'rgb(255, 243, 128)') {
                     highlight = true;
                 }
 
@@ -392,7 +392,7 @@ function HighlightCells() {
                 
             } else {
                 console.log('single cell toggle');
-                if (input.style.backgroundColor === '#FFF380') {
+                if (input.style.backgroundColor === '#FFF380' || input.style.backgroundColor === 'rgb(255, 243, 128)') {
                     input.style.backgroundColor = '';
                     console.log('off');
                 } else {
