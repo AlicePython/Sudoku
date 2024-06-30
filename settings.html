@@ -19,13 +19,6 @@
         <h1 class="title">Settings</h1>
     </div>
 
-    <select id="select1" name="new_type" onchange="generate_select2_go()" required>
-        <option selected="true" disabled="disabled" value="">Select data</option>
-        <option value="DataFrame" title="View proteins found in mRNA reading frames">Frames</option>
-        <option value="Proteins" title="View chains longer than 20 aminoacids">Proteins</option>
-        <option value="Oligopeptides" title="View chains shorter than 20 aminoacids">Oligopeptides</option>
-    </select>
-
     <select class="homebutton" onchange="ChangeColor(this.value)">
         <option selected="true" disabled="disabled" value="">Select highlight color</option>
         <option style="background-color: #FFF380;" value="yellow">Yellow</option>
@@ -39,10 +32,6 @@
         <option style="background-color: #F98B88;" value="pink">Pink</option>
     </select>
     <button class="homebutton" onclick="Back_to_Home()">Back to home</button>
-
-    <script>
-
-    </script>
 
 </body>
 
