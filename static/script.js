@@ -391,13 +391,10 @@ function HighlightCells() {
                 });
                 
             } else {
-                console.log('single cell toggle');
                 if (input.style.backgroundColor === '') {
                     input.style.backgroundColor = '#FFF380';
-                    console.log('on');
                 } else {
                     input.style.backgroundColor = '';
-                    console.log('off');
                 }
             }
         });
@@ -450,7 +447,6 @@ function GaveUp() {
         if (initial_values_flat[i] === 0) {
             input.value = solution[i];
             cell.setAttribute('readonly', 'true');
-            console.log(values[i],solution[i])
             if (values[i] === solution[i]) {
                 input.style.color = '#3EB489';
             } else {
