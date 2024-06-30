@@ -422,28 +422,33 @@ function HighlightCells() {
     cells.forEach(cell => {
         cell.addEventListener('contextmenu', function (event) {
             event.preventDefault();
+        });
+        cell.addEventListener('mousedown', function (event) {
+            if (event.button === 2) {
+                event.preventDefault();
             const input = cell.querySelector('input');
-
-            if (event.shiftKey && input.value !== '') {
-                const number = input.value;
-                let highlight = true;
-
-                if (input.style.backgroundColor === '') {
-                    highlight = false;
-                }
-
-                cells.forEach(cell => {
-                    const cell_input = cell.querySelector('input');
-                    if (cell_input.value === number) {
-                        cell_input.style.backgroundColor = highlight ? '' : highlight_color;
-                    }
-                });
                 
-            } else {
-                if (input.style.backgroundColor === '') {
-                    input.style.backgroundColor = highlight_color;
+                if (event.shiftKey && input.value !== '') {
+                    const number = input.value;
+                    let highlight = false;
+
+                    if (input.style.backgroundColor === '') {
+                        highlight = true;
+                    }
+
+                    cells.forEach(cell => {
+                        const cell_input = cell.querySelector('input');
+                        if (cell_input.value === number) {
+                            cell_input.style.backgroundColor = highlight ? highlight_color : '';
+                        }
+                    });
+
                 } else {
-                    input.style.backgroundColor = '';
+                    if (input.style.backgroundColor === '') {
+                        input.style.backgroundColor = highlight_color;
+                    } else {
+                        input.style.backgroundColor = '';
+                    }
                 }
             }
         });
