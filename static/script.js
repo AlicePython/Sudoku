@@ -6,7 +6,7 @@ localStorage.setItem('highlight_color', highlight_color);
 let color_dict = {
     yellow: '#FFF380',
     orange: '#FF7900',
-    red: '#F75D59',
+    red: '#F67280',
     green: '#54C571',
     blue: '#82CAFF',
     indigo: '#4B0082',
