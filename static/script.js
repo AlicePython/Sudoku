@@ -379,26 +379,24 @@ function HighlightCells() {
 
             if (event.shiftKey && input.value !== '') {
                 const number = input.value;
-                const allCells = document.querySelectorAll('td');
-                let highlight = false;
-
-                // Check if any cell with the same number is already highlighted
-                allCells.forEach(cell => {
-                    const cell_input = cell.querySelector('input');
-                    if (cell_input.value === number && cell_input.style.backgroundColor === '#FFF380') {
-                        highlight = true;
-                    }
-                });
-
-                // Toggle highlight or revert based on the current state
-                allCells.forEach(cell => {
-                    const cell_input = cell.querySelector('input');
-                    if (cell_input.value === number) {
-                        cell_input.style.backgroundColor = highlight ? '' : '#FFF380';
-                    }
-                });
-                
+                const cells = document.querySelectorAll('td');
+                if (input.style.backgroundColor === '') {
+                    cells.forEach(cell => {
+                        let cell_input = cell.querySelector('input');
+                        if (cell_input.value === number) {
+                            cell_input.style.backgroundColor = '#FFF380';
+                        }
+                    });
+                } else {
+                    cells.forEach(cell => {
+                        let cell_input = cell.querySelector('input');
+                        if (cell_input.value === number) {
+                            cell_input.style.backgroundColor = '';
+                        }
+                    });
+                }
             } else {
+                console.log(input.style.backgroundColor)
                 input.style.backgroundColor = input.style.backgroundColor === '#FFF380' ? '' : '#FFF380';
             }
         });
