@@ -1,3 +1,23 @@
+//Default global variable for highlight color
+let highlight_color = '#FFF380'
+
+//Global color dictionary
+let color_dict = {
+    yellow: '#FFF380',
+    orange: '#FF7900',
+    red: '#CB6D51',
+    green: '#54C571',
+    blue: '#82CAFF',
+    indigo: '#4B0082',
+    purple: '#6F2DA8',
+    lilac: '#B666D2',
+    pink: '#F98B88'
+};
+
+function ChangeColor(color_choice) {
+    highlight_color = color_dict[color_choice]
+}
+
 function validateInput(input) {
     // Only allow digits 1-9
     input.value = input.value.replace(/[^1-9]/g, '');
@@ -386,13 +406,13 @@ function HighlightCells() {
                 cells.forEach(cell => {
                     const cell_input = cell.querySelector('input');
                     if (cell_input.value === number) {
-                        cell_input.style.backgroundColor = highlight ? '' : '#FFF380';
+                        cell_input.style.backgroundColor = highlight ? '' : highlight_color;
                     }
                 });
                 
             } else {
                 if (input.style.backgroundColor === '') {
-                    input.style.backgroundColor = '#FFF380';
+                    input.style.backgroundColor = highlight_color;
                 } else {
                     input.style.backgroundColor = '';
                 }
