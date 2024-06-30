@@ -391,7 +391,11 @@ function HighlightCells() {
                 });
                 
             } else {
-                input.style.backgroundColor = input.style.backgroundColor === '#FFF380' ? '' : '#FFF380';
+                if (input.style.backgroundColor === '#FFF380') {
+                    input.style.backgroundColor = '';
+                } else {
+                    input.style.backgroundColor = '#FFF380';
+                }
             }
         });
     });
