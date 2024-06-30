@@ -377,10 +377,10 @@ function HighlightCells() {
 
             if (event.shiftKey && input.value !== '') {
                 const number = input.value;
-                let highlight = false;
+                let highlight = true;
 
-                if (input.style.backgroundColor === '#FFF380' || input.style.backgroundColor === 'rgb(255, 243, 128)') {
-                    highlight = true;
+                if (input.style.backgroundColor === '') {
+                    highlight = false;
                 }
 
                 cells.forEach(cell => {
@@ -392,12 +392,12 @@ function HighlightCells() {
                 
             } else {
                 console.log('single cell toggle');
-                if (input.style.backgroundColor === '#FFF380' || input.style.backgroundColor === 'rgb(255, 243, 128)') {
-                    input.style.backgroundColor = '';
-                    console.log('off');
-                } else {
+                if (input.style.backgroundColor === '') {
                     input.style.backgroundColor = '#FFF380';
                     console.log('on');
+                } else {
+                    input.style.backgroundColor = '';
+                    console.log('off');
                 }
             }
         });
