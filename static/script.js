@@ -458,14 +458,6 @@ function GaveUp() {
     const give_up = document.getElementById("give_up");
     clear_colors.remove();
     give_up.remove();
-    let button_div = document.getElementById("button_div");
-    let home_button = document.createElement("button");
-    home_button.id = "back_home";
-    home_button.className = "puzzlebutton";
-    home_button.title = "Go back to home page";
-    home_button.onclick = Home;
-    home_button.innerText = "Back to home";
-    button_div.appendChild(home_button)
 
     const cells = document.querySelectorAll('td');
     const inputs = document.querySelectorAll('input');
