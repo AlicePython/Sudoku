@@ -1,11 +1,12 @@
-//Default global variable for highlight color
-let highlight_color = '#FFF380'
+// Default global variable for highlight color
+var highlight_color = localStorage.getItem('highlight_color') || '#FFF380'; // Initialize from localStorage or default value
+localStorage.setItem('highlight_color', highlight_color);
 
 //Global color dictionary
 let color_dict = {
     yellow: '#FFF380',
     orange: '#FF7900',
-    red: '#CB6D51',
+    red: '#F75D59',
     green: '#54C571',
     blue: '#82CAFF',
     indigo: '#4B0082',
@@ -15,7 +16,8 @@ let color_dict = {
 };
 
 function ChangeColor(color_choice) {
-    highlight_color = color_dict[color_choice]
+    highlight_color = color_dict[color_choice];
+    localStorage.setItem('highlight_color', highlight_color);
 }
 
 function validateInput(input) {
@@ -265,8 +267,30 @@ function clearColors() {
         });
 }
 
-function Back_to_home() {
+function EasyPuzzle() {
+    window.location.href = 'puzzle.html?level=Easy'
+}
+    
+function IntermediatePuzzle() {
+    window.location.href = 'puzzle.html?level=Intermediate'
+}
+
+function HardPuzzle() {
+    window.location.href = 'puzzle.html?level=Hard'
+}
+
+function Solver() {
+    window.location.href = 'solver.html'
+}
+
+function Settings() {
+    window.location.href = 'settings.html'
+}
+
+function Home() {
+    highlight_color = localStorage.getItem('highlight_color');
     localStorage.clear();
+    localStorage.setItem('highlight_color',highlight_color);
     window.location.href = 'index.html'
 }
 
@@ -393,6 +417,7 @@ function ButtonHandler() {
 )}
 
 function HighlightCells() {
+    highlight_color = localStorage.getItem('highlight_color');
     const cells = document.querySelectorAll('td');
     cells.forEach(cell => {
         cell.addEventListener('contextmenu', function (event) {
@@ -438,7 +463,7 @@ function GaveUp() {
     home_button.id = "back_home";
     home_button.className = "puzzlebutton";
     home_button.title = "Go back to home page";
-    home_button.onclick = Back_to_home;
+    home_button.onclick = Home;
     home_button.innerText = "Back to home";
     button_div.appendChild(home_button)
 
